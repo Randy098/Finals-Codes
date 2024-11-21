@@ -1,0 +1,79 @@
+*Game Objects*
+```
+public class Character {
+    public string Name { get; set; }
+    public float Speed { get; set; }
+    public float JumpForce { get; set; }
+}
+
+public class Obstacle {
+    public enum Type { Rail, Rock, Train }
+    public Type CurrentType { get; set; }
+    public float PositionX { get; set; }
+}
+
+public class Coin {
+    public float PositionX { get; set; }
+    public float PositionY { get; set; }
+}
+```
+
+*Game Logic*
+```
+public class GameLogic {
+    public Character player;
+    public List<Obstacle> obstacles;
+    public List<Coin> coins;
+
+    public void Update() {
+        // Update player position
+        // Update obstacle positions
+        // Check collisions
+    }
+
+    public void Jump() {
+        // Apply jump force to player
+    }
+
+    public void CollectCoin(Coin coin) {
+        // Increment score
+        // Remove coin from game
+    }
+}
+```
+
+*Score and UI*
+```
+public class ScoreManager {
+    public int Score { get; set; }
+    public void IncrementScore() {
+        Score++;
+    }
+}
+
+public class UIManager {
+    public void UpdateScoreText(int score) {
+        // Update score text in UI
+    }
+}
+```
+
+*Example Usage*
+```
+public class Game {
+    private GameLogic gameLogic;
+    private ScoreManager scoreManager;
+    private UIManager uiManager;
+
+    void Start() {
+        gameLogic = new GameLogic();
+        scoreManager = new ScoreManager();
+        uiManager = new UIManager();
+    }
+
+    void Update() {
+        gameLogic.Update();
+        uiManager.UpdateScoreText(scoreManager.Score);
+    }
+}
+```
